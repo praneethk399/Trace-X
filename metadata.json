@@ -1,0 +1,6 @@
+{
+  "name": "TraceX - Cyber Financial Forensics Console",
+  "description": "Professional real-time fraud detection, transaction risk assessment, AI risk explanation, and network visualization platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
