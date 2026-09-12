@@ -22,6 +22,7 @@ import {
   TransactionType,
   StreamEvent
 } from '../types/forensics';
+import { formatINR } from '../data/mockForensics';
 
 // ============================================================================
 // TYPES

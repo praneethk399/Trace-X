@@ -17,6 +17,20 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      // Proxy /api to the TraceX backend (npm run server). SSE-safe.
+      proxy: {
+        '/api': {
+          target: process.env.API_PROXY_TARGET || 'http://localhost:8787',
+          changeOrigin: true,
+          configure: (proxy) => {
+            proxy.on('proxyRes', (proxyRes) => {
+              if (String(proxyRes.headers['content-type'] || '').includes('text/event-stream')) {
+                proxyRes.headers['cache-control'] = 'no-cache, no-transform';
+              }
+            });
+          },
+        },
+      },
     },
   };
 });

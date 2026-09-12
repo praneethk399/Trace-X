@@ -7,3 +7,6 @@ dist/
 .vite/
 .npm/
 .tracex
+dist-server/
+openapi.json
+scripts/*.log
